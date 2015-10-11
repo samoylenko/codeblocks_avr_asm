@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!DOCTYPE CodeBlocks_lexer_properties>
+
+<!--
+http://wiki.codeblocks.org/index.php/Creating_a_custom_lexer_for_Code::Blocks_editor
+
+Code::Blocks Lexer for AVR assembly, based on C::B MASM lexer
+-->
+
+<CodeBlocks_lexer_properties>
+        <Lexer name="AVR Assembly"
+                index="34"
+                filemasks="*.asm,*.S,*.s,*.inc">
+
+<!--
+/// Lexical states for SCLEX_ASM, SCLEX_AS
+#define wxSCI_ASM_DEFAULT 0
+#define wxSCI_ASM_COMMENT 1
+#define wxSCI_ASM_NUMBER 2
+#define wxSCI_ASM_STRING 3
+#define wxSCI_ASM_OPERATOR 4
+#define wxSCI_ASM_IDENTIFIER 5
+#define wxSCI_ASM_CPUINSTRUCTION 6
+#define wxSCI_ASM_MATHINSTRUCTION 7
+#define wxSCI_ASM_REGISTER 8
+#define wxSCI_ASM_DIRECTIVE 9
+#define wxSCI_ASM_DIRECTIVEOPERAND 10
+#define wxSCI_ASM_COMMENTBLOCK 11
+#define wxSCI_ASM_CHARACTER 12
+#define wxSCI_ASM_STRINGEOL 13
+#define wxSCI_ASM_EXTINSTRUCTION 14
+#define wxSCI_ASM_COMMENTDIRECTIVE 15
+-->
+
+
+                <Style name="Default"
+                        index="0"
+                        fg="0,0,0"
+                        bg="255,255,255"
+                        bold="0"
+                        italics="0"
+                        underlined="0"/>
+                <Style name="Comment"
+                        index="1,11"
+                        fg="160,160,160"/>
+                <Style name="Number"
+                        index="2"
+                        fg="128,0,0"/>
+                <Style name="String"
+                        index="3,13"
+                        fg="139,0,139"/>
+                <Style name="Character"
+                        index="12"
+                        fg="0,0,255"/>
+                <Style name="Operator"
+                        index="4"
+                        fg="255,0,0"/>
+                <Style name="Identifier"
+                        index="5"
+                        fg="0,0,0"
+                        bold="0"/>
+                <Style name="CPU Instruction"
+                        index="6"
+                        fg="0,0,160"
+                        bold="1"/>
+                <Style name="Math instruction"
+                        index="7"
+                        fg="0,0,160"
+                        bold="1"/>
+                <Style name="Register"
+                        index="8"
+                        fg="224,100,0"
+			bold="1"/>
+                <Style name="Directive"
+                        index="9"
+                        fg="0,128,0"/>
+                <Style name="Directive operand"
+                        index="10"
+                        fg="0,0,255"/>
+                <Style name="Extended instruction"
+                        index="15"
+                        fg="0,0,0"/>
+                <Keywords>
+
+
+<!--
+static const char * const asmWordListDesc[] = {
+        "CPU instructions",
+        "FPU instructions",
+        "Registers",
+        "Directives",
+        "Directive operands",
+        "Extended instructions",
+        "Directives4Foldstart",
+        "Directives4Foldend",
+        0
+};
+-->
+
+						<!-- CPU instructions -->
+						<Set index="0" value="add adc adiw sub subi sbc sbci sbiw and andi or ori eor com neg sbr cbr inc dec tst clr
+											ser mul muls mulsu fmul fmuls fmulsu des rjmp ijmp eijmp jmp rcall icall
+											eicall call ret reti cpse cp cpc cpi sbrc sbrs sbic sbis
+											brbs brbc breq brne brcs brcc brsh brlo brmi brpl brge brlt brhs brhc
+											brts brtc brvs brvc brie brid mov movw ldi lds ld ldd sts st std lpm 
+											elpm spm in out push pop xch las lac lat lsl lsr rol ror asr swap bset
+											bclr sbi cbi bst bld sec clc sen cln sez clz sei cli ses
+											cls sev clv set clt seh clh break nop sleep wdr"/>
+						<!-- Registers -->
+						<Set index="2" value="r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 r16 r17 r18 r19 r20 r21 r22 r23 r24
+											r25 r26 r27 r28 r29 r30 r31 r32"/>
+						<!-- Directives -->
+						<Set index="3" value=".define .undef .ifdef .ifndef .if .else .endif .elif .elseif .equ .byte . csegsize .db
+											.warning .macro .endm .dseg .eseg .cseg .org .include .device .def .dw
+											.dd .dq .endmacro .error .warning .exit .list .listmac .message .nolist
+											.set .overlap .nooverlap
+											high low byte2 byte3 byte4 lwrd hwrd page exp2 log2"/>
+						<!-- Directive operands -->
+						<Set index="4" value="@1 @2 @3 @4 @5 @6 @7 @8 @9"/>
+
+                </Keywords>
+                <SampleCode value="lexer_avr.sample"/>
+                <LanguageAttributes
+                    LineComment=";"
+                    StreamCommentStart=""
+                    StreamCommentEnd=""
+                    BoxCommentStart=""
+                    BoxCommentMid=""
+                    BoxCommentEnd=""
+                    CaseSensitive="0"
+                    LexerCommentStyles="1,11"
+                    LexerCharacterStyles="12"
+                    LexerStringStyles="3,13"
+                    LexerPreprocessorStyles=""/>
+        </Lexer>
+</CodeBlocks_lexer_properties>
