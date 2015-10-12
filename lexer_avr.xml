@@ -57,8 +57,7 @@ Code::Blocks Lexer for AVR assembly, based on C::B MASM lexer
                         fg="255,0,0"/>
                 <Style name="Identifier"
                         index="5"
-                        fg="0,0,0"
-                        bold="0"/>
+                        fg="0,0,0"/>
                 <Style name="CPU Instruction"
                         index="6"
                         fg="0,0,160"
@@ -78,8 +77,8 @@ Code::Blocks Lexer for AVR assembly, based on C::B MASM lexer
                         index="10"
                         fg="0,0,255"/>
                 <Style name="Extended instruction"
-                        index="15"
-                        fg="0,0,0"/>
+                        index="14"
+                        fg="0,0,160"/>
                 <Keywords>
 
 
@@ -99,13 +98,13 @@ static const char * const asmWordListDesc[] = {
 
 						<!-- CPU instructions -->
 						<Set index="0" value="add adc adiw sub subi sbc sbci sbiw and andi or ori eor com neg sbr cbr inc dec tst clr
-											ser mul muls mulsu fmul fmuls fmulsu des rjmp ijmp eijmp jmp rcall icall
+											ser mul muls mulsu fmul fmuls fmulsu rjmp ijmp eijmp jmp rcall icall
 											eicall call ret reti cpse cp cpc cpi sbrc sbrs sbic sbis
 											brbs brbc breq brne brcs brcc brsh brlo brmi brpl brge brlt brhs brhc
 											brts brtc brvs brvc brie brid mov movw ldi lds ld ldd sts st std lpm 
 											elpm spm in out push pop xch las lac lat lsl lsr rol ror asr swap bset
 											bclr sbi cbi bst bld sec clc sen cln sez clz sei cli ses
-											cls sev clv set clt seh clh break nop sleep wdr"/>
+											cls sev clv set clt seh clh nop sleep wdr"/>
 						<!-- Registers -->
 						<Set index="2" value="r0 r1 r2 r3 r4 r5 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 r16 r17 r18 r19 r20 r21 r22 r23 r24
 											r25 r26 r27 r28 r29 r30 r31 r32"/>
@@ -117,6 +116,9 @@ static const char * const asmWordListDesc[] = {
 											high low byte2 byte3 byte4 lwrd hwrd page exp2 log2"/>
 						<!-- Directive operands -->
 						<Set index="4" value="@1 @2 @3 @4 @5 @6 @7 @8 @9"/>
+
+						<!-- Extended instructions -->
+						<Set index="5" value="break des"/>
 
                 </Keywords>
                 <SampleCode value="lexer_avr.sample"/>
